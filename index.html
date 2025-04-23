@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>A Minecraft Movie</title>
+    <link rel="stylesheet" href="styles.css"> <!-- Link para o CSS da página -->
+</head>
+<body>
+    <header>
+        <h1>A MINECRAFT MOVIE</h1>
+    </header>
+
+    <main>
+        <section>
+            <h2>Deixe a sua opinião sobre Um Filme Minecraft e ganhe um brinde</h2>
+            <p>
+                Assista ao filme, deixe sua opinião e ganhe prêmios exclusivos no Minecraft! Todos que
+                participarem ganham um código para resgatar uma capa no jogo, e os 5 comentários mais
+                criativos podem ganhar ingressos para o próximo filme! O comentário mais curtido ganha um 
+                bônus colecionável do Creeper!
+            </p>
+            <div class="imaagens">
+                <div class="capa">
+                    <img src="./img/capa.png" alt="" style="width: 60px; height: auto;">
+                </div>
+                <div class="abelha">
+                    <img src="./img/abelha.png" alt="" style="width: 60px; height: auto;">
+                </div>
+                <div class="bloco">
+                    <img src="./img/bloco.png" alt="" style="width: 60px; height: auto;">
+                </div>
+            </div>
+            
+            <!-- trailer do filme -->
+            <iframe 
+                width="560" height="315" 
+                src="https://www.youtube.com/watch?v=wJO_vIDZn-I" 
+                title="Minecraft Movie Final Trailer" 
+                frameborder="0" 
+                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
+                allowfullscreen>
+            </iframe>
+        </section>
+
+        <section name="comentarios">
+            <h2>Melhores Comentários</h2>
+            <div class="comentarios">
+                <div class="ranking">
+                    <h3>1º lugar</h3>
+                    <p><strong>CreeperKing</strong></p>
+                    <p>Finalmente um filme que atende o que é um verdadeiro miner! <span class="likes">94</span></p>
+                </div>
+                <div class="ranking">
+                    <h3>2º lugar</h3>
+                    <p><strong>BloooMaster</strong></p>
+                    <p>Explodiu mais que TNT! Esse filme foi uma aventura épica! <span class="likes">81</span></p>
+                </div>
+                <div class="ranking">
+                    <h3>3º lugar</h3>
+                    <p><strong>SteveCraftado</strong></p>
+                    <p>Se esse filme fosse um item, seria encantado! <span class="likes">68</span></p>
+                </div>
+                <div class="ranking">
+                    <h3>4º lugar</h3>
+                    <p><strong>AdalbrahPlexada</strong></p>
+                    <p>Saí do cinema querendo construir tudo que vi no filme! <span class="likes">94</span></p>
+                </div>
+                <div class="ranking">
+                    <h3>5º lugar</h3>
+                    <p><strong>RasdonteRider</strong></p>
+                    <p>Mais divertido que tentar brigar com um monstro por perto! <span class="likes">62</span></p>
+                </div>
+            </div>
+        </section>
+
+        <section>
+            <h2>Deixe seu comentário aqui</h2>
+            <form action="submit_comment.php" method="POST">
+                <label for="email">Seu e-mail:</label>
+                <input type="email" id="email" name="email" required>
+                
+                <label for="username">Nome de usuário visível:</label>
+                <input type="text" id="username" name="username" required>
+                
+                <label for="comment">Comentário:</label>
+                <textarea id="comment" name="comment" rows="5" required></textarea>
+                
+                <button type="submit">Enviar</button>
+            </form>
+        </section>
+    </main>
+        <h2>Melhores Comentários</h2>
+        <div class="comentarios">
+            <div class="commentario"><strong>1º lugar:</strong> CreeperKing - Finalmente um filme que atende o que é um verdadeiro mineiro! ⭐ 94</div>
+            <div class="comment"><strong>2º lugar:</strong> BlooMaster - Explodi mais que TNT! Esse filme foi uma aventura épica! ⭐ 81</div>
+            <div class="comment"><strong>3º lugar:</strong> SteveCraftado - Se esse filme fosse um item, seria encantado com Silk Touch! ⭐ 68</div>
+            <div class="comment"><strong>4º lugar:</strong> AbelhaPixada - Sai do cinema querendo construir tudo que vi no filme! ⭐ 94</div>
+            <div class="comment"><strong>5º lugar:</strong> RedstoneRider - Mais divertido que tentar construir com um misturador por perto! ⭐ 70</div>
+        </div>
+
+        <h2>Veja Comentários</h2>
+        <div class="comentarios">
+            <div class="comment"><strong>Neth3rSlayer:</strong> Nunca pensei que blocos pudessem emocionar tanto. Chocante!</div>
+            <div class="comment"><strong>AlexMineiro:</strong> Esse filme é o Nether das emoções. Quero mais!</div>
+            <div class="comment"><strong>EnderLorde:</strong> Me senti lembrando diamantes de nostalgia em cada cena.</div>
+            <div class="comment"><strong>CraftBoy2000:</strong> Melhor que derrotar o Ender Dragon sem armadura!</div>
+            <div class="comment"><strong>TNTnaVé0ia:</strong> Quem diria que filmes de block quadrados iam me deixar tão recordavelmente feliz?</div>
+            <div class="comment"><strong>PixeLeo:</strong> Personagens carismáticos, roteiro envolvente e punição heroica!</div>
+            <div class="comment"><strong>GolemAmigo:</strong> O filme é como uma picarta de netherite: forte e inesquecível!</div>
+        </div>
+    </div>
+</body>
+</html>
