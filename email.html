@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f9f9f9;
+        }
+        .header {
+            text-align: center;
+            background-color: #4CAF50;
+            color: white;
+            padding: 20px;
+        }
+        .content {
+            padding: 20px;
+            background-color: white;
+            border-radius: 5px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+        }
+        .footer {
+            background-color: #f4f4f4;
+            text-align: center;
+            padding: 10px;
+        }
+        .btn {
+            display: inline-block;
+            padding: 10px 20px;
+            color: white;
+            background-color: #dc3545;
+            text-decoration: none;
+            border-radius: 5px;
+            text-align: center;
+        }
+        .btn:hover {
+            background-color: #c82333;
+        }
+        .flex-container {
+            display: flex;
+            align-items: center;
+        }
+        .capa {
+            margin-left: 20px;
+        }
+    </style>
+    <title>Assunto do E-mail</title>
+</head>
+<body>
+    <div class="header">
+        <h1>Bem-vindo</h1>
+    </div>
+    <div class="content">
+        <div class="flex-container">
+            <div class="init">
+                <p>
+                Olá, estamos felizes em tê-lo conosco. Abaixo está seu código para o resgate de sua capa:
+                <h1>0A0A-0A0A</h1>
+                <p>Resgate seu código em nosso site abaixo para concorrer a capa:</p>
+                </p>
+            </div>
+            <img src="./img/capa.png" alt="Capa" style="width: 150px; height: auto;" class="capa">
+        </div>
+        <p style="text-align: center;">
+            <div class="button-container">
+                <!-- Botão estilizado com o Bootstrap -->
+                <a href="https://www.seusite.com" class="btn btn-danger btn-block" role="button">Visite Nosso Site</a>
+            </div>
+        </p>
+        <p>Atenciosamente, <br> BitMiners</p>
+    </div>
+    <div class="footer">
+        <p>Este é um e-mail automático. Não responda a este endereço de e-mail.</p>
+    </div>
+</body>
+</html>
