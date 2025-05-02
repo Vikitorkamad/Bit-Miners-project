@@ -4,122 +4,256 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>A Minecraft Movie</title>
-    <link rel="stylesheet" href="styles.css"> <!-- Link para o CSS da página -->
+    <link rel="stylesheet" href="style.css"> 
 </head>
 <body>
+
+<main>
     <header>
-        <h1>A MINECRAFT MOVIE</h1>
+        <div class="topo">
+            <img src="./img/topo.png" alt="">
+        </div>
     </header>
 
-    <main>
-        <section>
-            <h2>Deixe a sua opinião sobre Um Filme Minecraft e ganhe um brinde</h2>
-            <p>
-                Assista ao filme, deixe sua opinião e ganhe prêmios exclusivos no Minecraft! Todos que
-                participarem ganham um código para resgatar uma capa no jogo, e os 5 comentários mais
-                criativos podem ganhar ingressos para o próximo filme! O comentário mais curtido ganha um 
-                bônus colecionável do Creeper!
-            </p>
-            <div class="imaagens">
-                <div class="capa">
-                    <img src="./img/capa.png" alt="" style="width: 60px; height: auto;">
-                </div>
-                <div class="abelha">
-                    <img src="./img/abelha.png" alt="" style="width: 60px; height: auto;">
-                </div>
-                <div class="bloco">
-                    <img src="./img/bloco.png" alt="" style="width: 60px; height: auto;">
-                </div>
-            </div>
-            
-            <!-- trailer do filme -->
-            <iframe 
-                width="560" height="315" 
-                src="https://www.youtube.com/watch?v=wJO_vIDZn-I" 
-                title="Minecraft Movie Final Trailer" 
-                frameborder="0" 
-                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
-                allowfullscreen>
-            </iframe>
-        </section>
+    <section>
+        <h2>Deixe a sua opinião sobre Um Filme Minecraft e ganhe um brinde</h2>
+        <p>
+            Assista ao filme, deixe sua opinião e ganhe prêmios exclusivos no Minecraft! Todos que
+            participarem ganham um código para resgatar uma capa no jogo, e os 5 comentários mais
+            criativos podem ganhar ingressos para o próximo filme! O comentário mais curtido ganha um 
+            bônus colecionável do Creeper!
+        </p>
+        <div class="imaagens">
+            <img src="./img/capa.png" alt="Capa" class="img1">
+            <img src="./img/abelha.png" alt="Abelha" class="img2">
+            <img src="./img/bloco.png" alt="Bloco" class="img3">
+            <img src="./img/abelha.png" alt="Outra Abelha" class="img4">
+        </div>
+        
+        <iframe 
+        width="560"
+        height="315"
+        src="https://www.youtube.com/embed/3IVPHxs4NoM?si=t9HrLX68M-8WLln3"
+        title="YouTube video player"
+        frameborder="0"
+        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+        referrerpolicy="strict-origin-when-cross-origin"
+        allowfullscreen>
+        </iframe>
+    </section>
 
-        <section name="comentarios">
-            <h2>Melhores Comentários</h2>
-            <div class="comentarios">
-                <div class="ranking">
-                    <h3>1º lugar</h3>
-                    <p><strong>CreeperKing</strong></p>
-                    <p>Finalmente um filme que atende o que é um verdadeiro miner! <span class="likes">94</span></p>
-                </div>
-                <div class="ranking">
-                    <h3>2º lugar</h3>
-                    <p><strong>BloooMaster</strong></p>
-                    <p>Explodiu mais que TNT! Esse filme foi uma aventura épica! <span class="likes">81</span></p>
-                </div>
-                <div class="ranking">
-                    <h3>3º lugar</h3>
-                    <p><strong>SteveCraftado</strong></p>
-                    <p>Se esse filme fosse um item, seria encantado! <span class="likes">68</span></p>
-                </div>
-                <div class="ranking">
-                    <h3>4º lugar</h3>
-                    <p><strong>AdalbrahPlexada</strong></p>
-                    <p>Saí do cinema querendo construir tudo que vi no filme! <span class="likes">94</span></p>
-                </div>
-                <div class="ranking">
-                    <h3>5º lugar</h3>
-                    <p><strong>RasdonteRider</strong></p>
-                    <p>Mais divertido que tentar brigar com um monstro por perto! <span class="likes">62</span></p>
-                </div>
-            </div>
-        </section>
-
-        <section>
-            <h2>Deixe seu comentário aqui</h2>
-            <p id="texto-tempo">o tempo está acbando. DEIXE SEU COMENTÁRIO!!!</p>
-            <p id="tempo">30:05:59:25</p>
-            <form action="submit_comment.php" method="POST">
-                <label for="email">Seu e-mail:</label>
-                <input type="email" id="email" name="email" required>
-                
-                <label for="username">Nome de usuário visível:</label>
-                <input type="text" id="username" name="username" required>
-                
-                <label for="comment">Comentário:</label>
-                <textarea id="comment" name="comment" rows="5" required></textarea>
-                
-                <button type="submit">Enviar</button>
-            </form>
-        </section>
-    </main>
+    <section name="comentarios">
         <h2>Melhores Comentários</h2>
         <div class="comentarios">
-            <div class="commentario"><strong>1º lugar:</strong> CreeperKing - Finalmente um filme que atende o que é um verdadeiro mineiro! ⭐ 94</div>
-            <div class="comment"><strong>2º lugar:</strong> BlooMaster - Explodi mais que TNT! Esse filme foi uma aventura épica! ⭐ 81</div>
-            <div class="comment"><strong>3º lugar:</strong> SteveCraftado - Se esse filme fosse um item, seria encantado com Silk Touch! ⭐ 68</div>
-            <div class="comment"><strong>4º lugar:</strong> AbelhaPixada - Sai do cinema querendo construir tudo que vi no filme! ⭐ 94</div>
-            <div class="comment"><strong>5º lugar:</strong> RedstoneRider - Mais divertido que tentar construir com um misturador por perto! ⭐ 70</div>
-        </div>
+            <div class="ranking">
+                <h3>1º lugar</h3>
+                <div id="sla">
+                    <p><strong><img src="./img/coment1.jpg" alt="Avatar" /> BlocoMaster</strong></p>
+                    <p>Explodiu mais que TNT! Esse filme foi uma aventura épica! <span class="likes">81</span></p>
+                </div>
+            </div>
 
-        <h2>Veja Comentários</h2>
-        <div class="comentarios">
-            <div class="comment"><strong>Neth3rSlayer:</strong> Nunca pensei que blocos pudessem emocionar tanto. Chocante!</div>
-            <div class="comment"><strong>AlexMineiro:</strong> Esse filme é o Nether das emoções. Quero mais!</div>
-            <div class="comment"><strong>EnderLorde:</strong> Me senti lembrando diamantes de nostalgia em cada cena.</div>
-            <div class="comment"><strong>CraftBoy2000:</strong> Melhor que derrotar o Ender Dragon sem armadura!</div>
-            <div class="comment"><strong>TNTnaVé0ia:</strong> Quem diria que filmes de block quadrados iam me deixar tão recordavelmente feliz?</div>
-            <div class="comment"><strong>PixeLeo:</strong> Personagens carismáticos, roteiro envolvente e punição heroica!</div>
-            <div class="comment"><strong>GolemAmigo:</strong> O filme é como uma picarta de netherite: forte e inesquecível!</div>
+            <div class="ranking">
+                <h3>2º lugar</h3>
+                <div id="sla">
+                    <p><strong><img src="./img/coment1.jpg" alt="Avatar" /> CreeperK1ng</strong></p>
+                    <p>Finalmente um filme que atende o que é um verdadeiro miner! <span class="likes">94</span></p>
+                </div>
+            </div>
+
+            <div class="ranking">
+                <h3>3º lugar</h3>
+                <div id="sla">
+                    <p><strong><img src="./img/coment1.jpg" alt="Avatar" /> SteveCraftado</strong></p>
+                    <p>Se esse filme fosse um item, seria encantado! <span class="likes">68</span></p>
+                </div>
+            </div>
+
+            <div class="ranking">
+                <h3>4º lugar</h3>
+                <div id="sla">
+                    <p><strong><img src="./img/coment1.jpg" alt="Avatar" /> AbelhaPixelada</strong></p>
+                    <p>Saí do cinema querendo construir tudo que vi no filme! <span class="likes">94</span></p>
+                </div>
+            </div>
+
+            <div class="ranking">
+                <h3>5º lugar</h3>
+                <div id="sla">
+                    <p><strong><img src="./img/coment1.jpg" alt="Avatar" /> RedstoneRider</strong></p>
+                    <p>Mais divertido que tentar dormir com um monstro por perto! <span class="likes">62</span></p>
+                </div>
+            </div>
         </div>
-        <h4>Não recebeu seu código por e-mail?</h4>
-        <div class="reenvio">
-            <p>nos repasse seu email que nossa equipe de suporte irá averiguar</p>
-            <form action="submit_comment.php" method="POST">
-                <label for="email">Seu e-mail:</label>
-                <input type="email" id="email" name="email" required>
-                <button type="submit">Enviar</button>
-            </form>
+    </section>
+
+    <section>
+        <p id="texto-tempo">o tempo está acabando. DEIXE SEU COMENTÁRIO!!!</p>
+        <p id="tempo">30:05:59:25</p>
+        <h2>Deixe seu comentário aqui</h2>
+        <div class="form-box">
+            <div class="form-content">
+                <form action="submit_comment.php" method="POST">
+                    <input type="email" placeholder="Seu e-mail:" id="email" name="email" required>
+                    <input type="text" placeholder="Nome de usuário visível:" id="username" name="username" required>
+                    <textarea id="comment" placeholder="Comentário:" name="comment" rows="5" required></textarea>
+                    <button type="submit">Enviar</button>
+                </form>
+            </div>
         </div>
+    </section>
+    <section>
+        <h2>Veja Comentários!</h2>
+        <button class="filter-button">Filtros <span class="arrow">▼</span></button>
+        <div class="comments-grid">
+            <div class="comment-box">
+                <img src="./img/coment.png" alt="Avatar" class="avatar" />
+                <div class="comment-content">
+                    <div class="comment-header">
+                        <strong>Neth3rSlayer</strong>
+                        <span class="star">★</span>
+                    </div>
+                    <p>Nunca pensei que blocos pudessem emocionar tanto. Chocante!</p>
+                </div>
+            </div>
+    
+            <div class="comment-box">
+                <img src="./img/coment.png" alt="Avatar" class="avatar" />
+                <div class="comment-content">
+                    <div class="comment-header">
+                        <strong>AlexMineiro</strong>
+                        <span class="star">★</span>
+                    </div>
+                    <p>Esse filme é o Nether das emoções. Quero mais!</p>
+                </div>
+            </div>
+    
+            <div class="comment-box">
+                <img src="./img/coment.png" alt="Avatar" class="avatar" />
+                <div class="comment-content">
+                    <div class="comment-header">
+                        <strong>EnderLorde</strong>
+                        <span class="star">★</span>
+                    </div>
+                    <p>Me senti lembrando diamantes de nostalgia em cada cena.</p>
+                </div>
+            </div>
+    
+            <div class="comment-box">
+                <img src="./img/coment.png" alt="Avatar" class="avatar" />
+                <div class="comment-content">
+                    <div class="comment-header">
+                        <strong>CraftBoy2000</strong>
+                        <span class="star">★</span>
+                    </div>
+                    <p>Melhor que derrotar o Ender Dragon sem armadura!</p>
+                </div>
+            </div>
+    
+            <div class="comment-box">
+                <img src="./img/coment.png" alt="Avatar" class="avatar" />
+                <div class="comment-content">
+                    <div class="comment-header">
+                        <strong>TNTnaVé0ia</strong>
+                        <span class="star">★</span>
+                    </div>
+                    <p>Quem diria que filmes de blocos quadrados iam me deixar tão recordavelmente feliz?</p>
+                </div>
+            </div>
+    
+            <div class="comment-box">
+                <img src="./img/coment.png" alt="Avatar" class="avatar" />
+                <div class="comment-content">
+                    <div class="comment-header">
+                        <strong>PixeLeo</strong>
+                        <span class="star">★</span>
+                    </div>
+                    <p>Personagens carismáticos, roteiro envolvente e punição heroica!</p>
+                </div>
+            </div>
+    
+            <div class="comment-box">
+                <img src="./img/coment.png" alt="Avatar" class="avatar" />
+                <div class="comment-content">
+                    <div class="comment-header">
+                        <strong>GolemAmigo</strong>
+                        <span class="star">★</span>
+                    </div>
+                    <p>O filme é como uma picareta de netherite: forte e inesquecível!</p>
+                </div>
+            </div>
+
+            <div class="comment-box">
+                <img src="./img/coment.png" alt="Avatar" class="avatar" />
+                <div class="comment-content">
+                    <div class="comment-header">
+                        <strong>GolemAmigo</strong>
+                        <span class="star">★</span>
+                    </div>
+                    <p>Simplesmente INCRIVEL</p>
+                </div>
+            </div>
+
+            <div class="comment-box">
+                <img src="./img/coment.png" alt="Avatar" class="avatar" />
+                <div class="comment-content">
+                    <div class="comment-header">
+                        <strong>GolemAmigo</strong>
+                        <span class="star">★</span>
+                    </div>
+                    <p>Assiste cinco vezes e ainda acho maravilhoso</p>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+
+    <h4 id="h4">Não recebeu seu código por e-mail?</h4>
+    <div class="reenvio">
+        <p>nos repasse seu email que nossa equipe de suporte irá averiguar</p>
+        <form action="submit_comment.php" method="POST">
+            <input type="email" id="email" name="email" placeholder="Seu e-mail:" required>
+            <button type="submit">Enviar</button>
+        </form>
     </div>
+</main>
+
 </body>
 </html>
+<script>
+    let dias = 30, horas = 5, minutos = 59, segundos = 25;
+  
+    function atualizarTempo() {
+
+      if (segundos > 0) {
+        segundos--;
+      } else {
+        segundos = 59;
+        if (minutos > 0) {
+          minutos--;
+        } else {
+          minutos = 59;
+          if (horas > 0) {
+            horas--;
+          } else {
+            horas = 23;
+            if (dias > 0) {
+              dias--;
+
+              clearInterval(contador);
+              document.getElementById("texto-tempo").innerText = "O TEMPO ACABOU!";
+              return;
+            }
+          }
+        }
+      }
+
+      document.getElementById("tempo").innerText =
+        String(dias).padStart(2, '0') + ":" +
+        String(horas).padStart(2, '0') + ":" +
+        String(minutos).padStart(2, '0') + ":" +
+        String(segundos).padStart(2, '0');
+    }
+
+    let contador = setInterval(atualizarTempo, 1000);
+  </script>
