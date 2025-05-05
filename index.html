@@ -3,18 +3,24 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>A Minecraft Movie</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <link rel="stylesheet" href="style.css"> 
+    <title>A Minecraft Movie</title>
 </head>
 
 <!-- BARRA DE COOKIES -->
-    <div id="cookie-bar" style="position: fixed; bottom: 0; left: 0; right: 0; background: #222; color: white; padding: 1em; text-align: center; z-index: 9999; display: none;">
-        Este site usa cookies para melhorar sua experiência. Ao continuar, você concorda com o uso.
-        <button onclick="aceitarCookies()" style="margin-left: 1em; padding: 0.5em 1em; background: #4CAF50; color: white; border: none; border-radius: 5px; cursor: pointer;">
-            Aceitar
-        </button>
+<div id="cookie-bar">
+    <p>
+      O site <strong>bitMiners</strong> usa cookies e outras tecnologias semelhantes para melhorar a sua experiência, personalizar conteúdo e anúncios, oferecer recursos de mídia social e analisar nosso tráfego.  
+      Ao continuar navegando, você concorda com essas condições. Para mais informações, acesse nossa 
+      <a href="seguranca-e-privacidade.html">Política de Privacidade</a>.
+    </p>
+  <div id="cookie-overlay" 
+    <div>
+      <p>Você precisa aceitar os cookies para usar o site.</p>
+      <button onclick="aceitarCookies()">Aceitar cookies</button>
     </div>
-
+  </div>
 
 <body>
 
@@ -116,104 +122,107 @@
         <h2>Veja Comentários!</h2>
         <button class="filter-button">Filtros <span class="arrow">▼</span></button>
         <div class="comments-grid">
+
             <div class="comment-box">
                 <img src="./img/coment.png" alt="Avatar" class="avatar" />
                 <div class="comment-content">
                     <div class="comment-header">
                         <strong>Neth3rSlayer</strong>
-                        <span class="star">★</span>
+                        <span class="fa fa-star"></span>
                     </div>
                     <p>Nunca pensei que blocos pudessem emocionar tanto. Chocante!</p>
                 </div>
             </div>
-    
+            
             <div class="comment-box">
                 <img src="./img/coment.png" alt="Avatar" class="avatar" />
                 <div class="comment-content">
                     <div class="comment-header">
                         <strong>AlexMineiro</strong>
-                        <span class="star">★</span>
+                        <span class="fa fa-star"></span>
                     </div>
                     <p>Esse filme é o Nether das emoções. Quero mais!</p>
                 </div>
             </div>
-    
+            
             <div class="comment-box">
                 <img src="./img/coment.png" alt="Avatar" class="avatar" />
                 <div class="comment-content">
                     <div class="comment-header">
                         <strong>EnderLorde</strong>
-                        <span class="star">★</span>
+                        <span class="fa fa-star"></span>
                     </div>
                     <p>Me senti lembrando diamantes de nostalgia em cada cena.</p>
                 </div>
             </div>
-    
+            
             <div class="comment-box">
                 <img src="./img/coment.png" alt="Avatar" class="avatar" />
                 <div class="comment-content">
                     <div class="comment-header">
                         <strong>CraftBoy2000</strong>
-                        <span class="star">★</span>
+                        <span class="fa fa-star"></span>
                     </div>
                     <p>Melhor que derrotar o Ender Dragon sem armadura!</p>
                 </div>
             </div>
-    
+            
             <div class="comment-box">
                 <img src="./img/coment.png" alt="Avatar" class="avatar" />
                 <div class="comment-content">
                     <div class="comment-header">
                         <strong>TNTnaVé0ia</strong>
-                        <span class="star">★</span>
+                        <span class="fa fa-star"></span>
                     </div>
                     <p>Quem diria que filmes de blocos quadrados iam me deixar tão recordavelmente feliz?</p>
                 </div>
             </div>
-    
+            
             <div class="comment-box">
                 <img src="./img/coment.png" alt="Avatar" class="avatar" />
                 <div class="comment-content">
                     <div class="comment-header">
                         <strong>PixeLeo</strong>
-                        <span class="star">★</span>
+                        <span class="fa fa-star"></span>
                     </div>
                     <p>Personagens carismáticos, roteiro envolvente e punição heroica!</p>
                 </div>
             </div>
-    
+            
             <div class="comment-box">
                 <img src="./img/coment.png" alt="Avatar" class="avatar" />
                 <div class="comment-content">
                     <div class="comment-header">
                         <strong>GolemAmigo</strong>
-                        <span class="star">★</span>
+                        <span class="fa fa-star"></span>
                     </div>
                     <p>O filme é como uma picareta de netherite: forte e inesquecível!</p>
                 </div>
             </div>
-
+            
             <div class="comment-box">
                 <img src="./img/coment.png" alt="Avatar" class="avatar" />
                 <div class="comment-content">
                     <div class="comment-header">
-                        <strong>GolemAmigo</strong>
-                        <span class="star">★</span>
+                        <strong>NetherWalker</strong>
+                        <span class="fa fa-star"></span>
                     </div>
                     <p>Simplesmente INCRIVEL</p>
                 </div>
             </div>
-
+            
             <div class="comment-box">
                 <img src="./img/coment.png" alt="Avatar" class="avatar" />
                 <div class="comment-content">
                     <div class="comment-header">
                         <strong>GolemAmigo</strong>
-                        <span class="star">★</span>
+                        <span class="fa fa-star"></span>
                     </div>
-                    <p>Assiste cinco vezes e ainda acho maravilhoso</p>
+                    <p>Assisti umas cinco vezes e ainda acho maravilhoso</p>
                 </div>
             </div>
+            
+
         </div>
     </section>
     
@@ -267,36 +276,81 @@
 
     let contador = setInterval(atualizarTempo, 1000);
 
-      // Função para criar o cookie
-  function setCookie(nome, valor, dias) {
+    // função cookie
+
+// Função para definir o valor do cookie
+function setCookie(nome, valor, dias) {
     const d = new Date();
-    d.setTime(d.getTime() + (dias * 24 * 60 * 60 * 1000));
+    d.setTime(d.getTime() + (dias * 24 * 60 * 60 * 1000)); // Definindo o tempo de expiração
     const expires = "expires=" + d.toUTCString();
     document.cookie = nome + "=" + valor + ";" + expires + ";path=/";
-  }
+}
 
-  // Função para ler cookie
-  function getCookie(nome) {
+// Função para obter o valor do cookie
+function getCookie(nome) {
     const nomeEQ = nome + "=";
     const ca = document.cookie.split(';');
     for (let c of ca) {
-      while (c.charAt(0) == ' ') c = c.substring(1);
-      if (c.indexOf(nomeEQ) == 0) return c.substring(nomeEQ.length, c.length);
+        while (c.charAt(0) === ' ') c = c.substring(1);
+        if (c.indexOf(nomeEQ) === 0) return c.substring(nomeEQ.length, c.length);
     }
     return null;
-  }
+}
 
-  // Mostrar barra de cookie se ainda não aceitou
-  window.onload = function () {
-    if (!getCookie("cookiesAceitos")) {
-      document.getElementById("cookie-bar").style.display = "block";
+// Função para aceitar os cookies
+function aceitarCookies() {
+    setCookie("cookiesConsent", "aceito", 365); // Marca o consentimento
+    document.getElementById("cookie-bar").style.display = "none"; // Oculta a barra de cookies
+    document.getElementById("cookie-overlay").style.display = "none"; // Oculta o overlay
+}
+
+// Função para rejeitar os cookies
+function rejeitarCookies() {
+    setCookie("cookiesConsent", "rejeitado", 365); // Marca o consentimento como rejeitado
+    document.getElementById("cookie-bar").style.display = "none"; // Oculta a barra de cookies
+    document.getElementById("cookie-overlay").style.display = "flex"; // Exibe o overlay
+}
+
+// Função para verificar o cookie ao carregar a página
+window.onload = function () {
+    const consent = getCookie("cookiesConsent"); // Verifica o estado do cookie
+
+    if (consent === "aceito") {
+        // Se o cookie foi aceito, não mostra o overlay nem a barra
+        document.getElementById("cookie-bar").style.display = "none";
+        document.getElementById("cookie-overlay").style.display = "none";
+    } else if (consent === "rejeitado") {
+        // Se o cookie foi rejeitado, exibe o overlay
+        document.getElementById("cookie-overlay").style.display = "flex";
+    } else {
+        // Se o consentimento não foi dado, exibe o overlay e a barra
+        document.getElementById("cookie-bar").style.display = "block";
+        document.getElementById("cookie-overlay").style.display = "flex";
     }
-  };
+};
 
-  // Aceitar cookies
-  function aceitarCookies() {
-    setCookie("cookiesAceitos", "sim", 365);
-    document.getElementById("cookie-bar").style.display = "none";
-  }
+// Adicionando interatividade com a estrela
+document.addEventListener("DOMContentLoaded", function () {
+    const stars = document.querySelectorAll(".fa-star"); // Seleciona todas as estrelas
+
+    // Itera sobre todas as estrelas
+    stars.forEach(function (star, index) {
+        // Verificar o cookie para o estado de cada estrela
+        const starState = getCookie("starState" + index);
+
+        // Se o estado for "clicked", adicionar a classe "checked" para a estrela
+        if (starState === "clicked") {
+            star.classList.add("checked");
+        }
+
+        // Tornar cada estrela interativa
+        star.addEventListener("click", function () {
+            this.classList.toggle("checked"); // Alterna entre dourada e cinza
+            const newState = this.classList.contains("checked") ? "clicked" : "unclicked";
+            setCookie("starState" + index, newState, 365); // Salva o estado no cookie específico da estrela
+        });
+    });
+});
+      
 
   </script>
