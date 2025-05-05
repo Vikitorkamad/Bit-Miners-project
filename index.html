@@ -6,6 +6,16 @@
     <title>A Minecraft Movie</title>
     <link rel="stylesheet" href="style.css"> 
 </head>
+
+<!-- BARRA DE COOKIES -->
+    <div id="cookie-bar" style="position: fixed; bottom: 0; left: 0; right: 0; background: #222; color: white; padding: 1em; text-align: center; z-index: 9999; display: none;">
+        Este site usa cookies para melhorar sua experiência. Ao continuar, você concorda com o uso.
+        <button onclick="aceitarCookies()" style="margin-left: 1em; padding: 0.5em 1em; background: #4CAF50; color: white; border: none; border-radius: 5px; cursor: pointer;">
+            Aceitar
+        </button>
+    </div>
+
+
 <body>
 
 <main>
@@ -256,4 +266,37 @@
     }
 
     let contador = setInterval(atualizarTempo, 1000);
+
+      // Função para criar o cookie
+  function setCookie(nome, valor, dias) {
+    const d = new Date();
+    d.setTime(d.getTime() + (dias * 24 * 60 * 60 * 1000));
+    const expires = "expires=" + d.toUTCString();
+    document.cookie = nome + "=" + valor + ";" + expires + ";path=/";
+  }
+
+  // Função para ler cookie
+  function getCookie(nome) {
+    const nomeEQ = nome + "=";
+    const ca = document.cookie.split(';');
+    for (let c of ca) {
+      while (c.charAt(0) == ' ') c = c.substring(1);
+      if (c.indexOf(nomeEQ) == 0) return c.substring(nomeEQ.length, c.length);
+    }
+    return null;
+  }
+
+  // Mostrar barra de cookie se ainda não aceitou
+  window.onload = function () {
+    if (!getCookie("cookiesAceitos")) {
+      document.getElementById("cookie-bar").style.display = "block";
+    }
+  };
+
+  // Aceitar cookies
+  function aceitarCookies() {
+    setCookie("cookiesAceitos", "sim", 365);
+    document.getElementById("cookie-bar").style.display = "none";
+  }
+
   </script>
