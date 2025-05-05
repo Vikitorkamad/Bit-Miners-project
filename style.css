@@ -86,7 +86,7 @@ p {
 }
 
 .img3 {
-    bottom: 130vh;
+    bottom: 140vh;
     left: -60px;
 }
 
@@ -113,7 +113,7 @@ iframe {
 .ranking {
 
     width: 220px;
-    background-color: #ff7f00;
+    background-color: #CF611C;
     border-radius: 15px;
     padding: 15px;
     color: #000;
@@ -166,7 +166,7 @@ iframe {
     align-items: center;
     margin-top: 8px;
     font-weight: bold;
-    color: #f4b400;
+    color: #CF611C;
 }
 
 .ranking .likes::before {
@@ -181,7 +181,7 @@ iframe {
   }
 
   .form-content {
-    background-color: #d05f08;
+    background-color: #CF611C;
     padding: 5px;
     border-radius: 0px 0px 10px 10px;
     margin: 25px -5px -10px -5px;
