@@ -15,15 +15,17 @@
       Ao continuar navegando, você concorda com essas condições. Para mais informações, acesse nossa 
       <a href="seguranca-e-privacidade.html">Política de Privacidade</a>.
     </p>
-  <div id="cookie-overlay" 
-  <div>
-    <p>Você precisa aceitar os cookies para usar o site.</p>
-    <p>
-      Para mais informações, consulte nossa 
-      <a href="seguranca-e-privacidade.html">Política de Segurança e Privacidade</a>.
-    </p>
-    <br>
-    <button onclick="aceitarCookies()">Aceitar cookies</button>
+  <div id="cookie-overlay" >
+
+      <div>
+        <p>Você precisa aceitar os cookies para usar o site.</p>
+        <p>
+          Para mais informações, consulte nossa 
+          <a href="seguranca-e-privacidade.html">Política de Segurança e Privacidade</a>.
+        </p>
+        <br>
+        <button onclick="aceitarCookies()">Aceitar cookies</button>
+      </div>
   </div>
   </div>
 
@@ -145,7 +147,7 @@
         <h2>Deixe seu comentário aqui</h2>
         <div class="form-box">
             <div class="form-content">
-                <form action="submit_comment.php" method="POST">
+                <form action="add-comentario.php" method="POST">
                     <input type="email" placeholder="Seu e-mail:" id="email" name="email" required>
                     <input type="text" placeholder="Nome de usuário visível:" id="username" name="username" required>
                     <textarea id="comment" placeholder="Comentário:" name="comment" rows="5" required></textarea>
@@ -362,6 +364,7 @@ window.onload = function () {
         document.getElementById("cookie-overlay").style.display = "flex";
     }
 };
+
 document.addEventListener("DOMContentLoaded", function () {
     const stars = document.querySelectorAll(".fa-star");
     stars.forEach(function (star, index) {
@@ -387,18 +390,7 @@ document.addEventListener("DOMContentLoaded", function () {
             likesSpan.textContent = likes;
         });
     });
-
-    function setCookie(name, value, days) {
-        const expires = new Date(Date.now() + days * 864e5).toUTCString();
-        document.cookie = name + "=" + encodeURIComponent(value) + "; expires=" + expires + "; path=/";
-    }
-
-    function getCookie(name) {
-        return document.cookie.split("; ").reduce((r, v) => {
-            const parts = v.split("=");
-            return parts[0] === name ? decodeURIComponent(parts[1]) : r
-        }, "");
-    }
 });
+
 
   </script>
