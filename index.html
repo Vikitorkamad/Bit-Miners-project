@@ -359,22 +359,12 @@ window.onload = function () {
 };
 document.addEventListener("DOMContentLoaded", function () {
     const stars = document.querySelectorAll(".fa-star");
-
     stars.forEach(function (star, index) {
-        const likesSpan = star.parentElement.querySelector(".likes-count");
-        const keyStar = "starState" + index;
-        const keyLikes = "likesCount" + index;
+        const likesSpan = star.parentElement.querySelector(".likes-count"); // assume que o span.likes vem antes da estrela
+        const starState = getCookie("starState" + index);
 
-        // Restaurar estado da estrela
-        const starState = localStorage.getItem(keyStar);
         if (starState === "clicked") {
             star.classList.add("checked");
-        }
-
-        // Restaurar quantidade de likes
-        const savedLikes = localStorage.getItem(keyLikes);
-        if (savedLikes !== null) {
-            likesSpan.textContent = savedLikes;
         }
 
         star.addEventListener("click", function () {
@@ -383,16 +373,27 @@ document.addEventListener("DOMContentLoaded", function () {
 
             if (isChecked) {
                 likes += 1;
-                localStorage.setItem(keyStar, "clicked");
+                setCookie("starState" + index, "clicked", 365);
             } else {
-                likes = Math.max(0, likes - 1);
-                localStorage.setItem(keyStar, "unclicked");
+                likes = Math.max(0, likes - 1); // evita likes negativos
+                setCookie("starState" + index, "unclicked", 365);
             }
 
             likesSpan.textContent = likes;
-            localStorage.setItem(keyLikes, likes);
         });
     });
+
+    function setCookie(name, value, days) {
+        const expires = new Date(Date.now() + days * 864e5).toUTCString();
+        document.cookie = name + "=" + encodeURIComponent(value) + "; expires=" + expires + "; path=/";
+    }
+
+    function getCookie(name) {
+        return document.cookie.split("; ").reduce((r, v) => {
+            const parts = v.split("=");
+            return parts[0] === name ? decodeURIComponent(parts[1]) : r
+        }, "");
+    }
 });
 
   </script>
