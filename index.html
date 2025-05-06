@@ -65,7 +65,13 @@
                 <h3>1º lugar</h3>
                 <div id="sla">
                     <p><strong><img src="./img/coment1.jpg" alt="Avatar" /> BlocoMaster</strong></p>
-                    <p>Explodiu mais que TNT! Esse filme foi uma aventura épica! <span class="likes">81</span></p>
+                    <p>
+                        Explodiu mais que TNT! Esse filme foi uma aventura épica!
+                        <span class="likes">
+                          <span class="likes-count">81</span>
+                          <span class="fa fa-star"></span>
+                        </span>
+                      </p>
                 </div>
             </div>
 
@@ -73,33 +79,58 @@
                 <h3>2º lugar</h3>
                 <div id="sla">
                     <p><strong><img src="./img/coment1.jpg" alt="Avatar" /> CreeperK1ng</strong></p>
-                    <p>Finalmente um filme que atende o que é um verdadeiro miner! <span class="likes">94</span></p>
+                    <p>
+                        Finalmente um filme que atende o que é um verdadeiro miner!
+                        <span class="likes">
+                            <span class="likes-count">94</span>
+                            <span class="fa fa-star"></span>
+                        </span>
+                    </p>
                 </div>
             </div>
-
+            
             <div class="ranking">
                 <h3>3º lugar</h3>
                 <div id="sla">
                     <p><strong><img src="./img/coment1.jpg" alt="Avatar" /> SteveCraftado</strong></p>
-                    <p>Se esse filme fosse um item, seria encantado! <span class="likes">68</span></p>
+                    <p>
+                        Se esse filme fosse um item, seria encantado!
+                        <span class="likes">
+                            <span class="likes-count">68</span>
+                            <span class="fa fa-star"></span>
+                        </span>
+                    </p>
                 </div>
             </div>
-
+            
             <div class="ranking">
                 <h3>4º lugar</h3>
                 <div id="sla">
                     <p><strong><img src="./img/coment1.jpg" alt="Avatar" /> AbelhaPixelada</strong></p>
-                    <p>Saí do cinema querendo construir tudo que vi no filme! <span class="likes">94</span></p>
+                    <p>
+                        Saí do cinema querendo construir tudo que vi no filme!
+                        <span class="likes">
+                            <span class="likes-count">94</span>
+                            <span class="fa fa-star"></span>
+                        </span>
+                    </p>
                 </div>
             </div>
-
+            
             <div class="ranking">
                 <h3>5º lugar</h3>
                 <div id="sla">
                     <p><strong><img src="./img/coment1.jpg" alt="Avatar" /> RedstoneRider</strong></p>
-                    <p>Mais divertido que tentar dormir com um monstro por perto! <span class="likes">62</span></p>
+                    <p>
+                        Mais divertido que tentar dormir com um monstro por perto!
+                        <span class="likes">
+                            <span class="likes-count">62</span>
+                            <span class="fa fa-star"></span>
+                        </span>
+                    </p>
                 </div>
             </div>
+
         </div>
     </section>
 
@@ -276,8 +307,6 @@
 
     let contador = setInterval(atualizarTempo, 1000);
 
-    // função cookie
-
 // Função para definir o valor do cookie
 function setCookie(nome, valor, dias) {
     const d = new Date();
@@ -328,29 +357,42 @@ window.onload = function () {
         document.getElementById("cookie-overlay").style.display = "flex";
     }
 };
-
-// Adicionando interatividade com a estrela
 document.addEventListener("DOMContentLoaded", function () {
-    const stars = document.querySelectorAll(".fa-star"); // Seleciona todas as estrelas
+    const stars = document.querySelectorAll(".fa-star");
 
-    // Itera sobre todas as estrelas
     stars.forEach(function (star, index) {
-        // Verificar o cookie para o estado de cada estrela
-        const starState = getCookie("starState" + index);
+        const likesSpan = star.parentElement.querySelector(".likes-count");
+        const keyStar = "starState" + index;
+        const keyLikes = "likesCount" + index;
 
-        // Se o estado for "clicked", adicionar a classe "checked" para a estrela
+        // Restaurar estado da estrela
+        const starState = localStorage.getItem(keyStar);
         if (starState === "clicked") {
             star.classList.add("checked");
         }
 
-        // Tornar cada estrela interativa
+        // Restaurar quantidade de likes
+        const savedLikes = localStorage.getItem(keyLikes);
+        if (savedLikes !== null) {
+            likesSpan.textContent = savedLikes;
+        }
+
         star.addEventListener("click", function () {
-            this.classList.toggle("checked"); // Alterna entre dourada e cinza
-            const newState = this.classList.contains("checked") ? "clicked" : "unclicked";
-            setCookie("starState" + index, newState, 365); // Salva o estado no cookie específico da estrela
+            const isChecked = this.classList.toggle("checked");
+            let likes = parseInt(likesSpan.textContent, 10);
+
+            if (isChecked) {
+                likes += 1;
+                localStorage.setItem(keyStar, "clicked");
+            } else {
+                likes = Math.max(0, likes - 1);
+                localStorage.setItem(keyStar, "unclicked");
+            }
+
+            likesSpan.textContent = likes;
+            localStorage.setItem(keyLikes, likes);
         });
     });
 });
-      
 
   </script>
