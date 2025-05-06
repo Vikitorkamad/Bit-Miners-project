@@ -1,0 +1,18 @@
+{
+    "name": "teste/aula",
+    "description": "teste de teste",
+    "autoload": {
+        "psr-4": {
+            "Teste\\Aula\\": "src/"
+        }
+    },
+    "authors": [
+        {
+            "name": "GabrielFs33",
+            "email": "cleitonmiyamoto77@gmail.com"
+        }
+    ],
+    "require": {
+        "vlucas/phpdotenv": "^5.6"
+    }
+}
