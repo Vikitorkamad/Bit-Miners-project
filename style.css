@@ -310,28 +310,6 @@ form button:hover {
     font-size: 0.95rem;
 }
 
-.filter-button {
-    background-color: #4CAF50;
-    color: white;
-    border: none;
-    padding: 8px 16px;
-    border-radius: 20px;
-    cursor: pointer;
-    font-weight: bold;
-    margin: 0 auto 20px auto;
-    display: block;
-    transition: background-color 0.3s;
-}
-
-.filter-button:hover {
-    background-color: #388E3C;
-}
-
-.arrow {
-    font-size: 0.9rem;
-    margin-left: 5px;
-}
-
 
 #texto-tempo {
     font-size: 2rem;
