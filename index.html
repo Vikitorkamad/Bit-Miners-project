@@ -409,7 +409,7 @@ document.addEventListener("DOMContentLoaded", function () {
       const payload = { email, username, comment };
   
       try {
-        const res = await fetch('/api/insert', {
+        const res = await fetch('/api/entrarComentario.php', {
           method: 'POST',
           headers: {
             'Content-Type': 'application/json'
