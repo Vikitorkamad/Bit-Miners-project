@@ -147,7 +147,7 @@
         <h2>Deixe seu comentário aqui</h2>
         <div class="form-box">
             <div class="form-content">
-                <form action="add-comentario.php" method="POST">
+                <form id="envioform" method="POST">
                     <input type="email" placeholder="Seu e-mail:" id="email" name="email" required>
                     <input type="text" placeholder="Nome de usuário visível:" id="username" name="username" required>
                     <textarea id="comment" placeholder="Comentário:" name="comment" rows="5" required></textarea>
@@ -392,5 +392,42 @@ document.addEventListener("DOMContentLoaded", function () {
     });
 });
 
-
+document.addEventListener("DOMContentLoaded", function () {
+    const form = document.getElementById('envioform');
+  
+    form.addEventListener('submit', async (e) => {
+      e.preventDefault(); // Impede o reload da página
+  
+      // Lê os valores dos inputs
+      const email = document.getElementById('email').value.trim();
+      const username = document.getElementById('username').value.trim();
+      const comment = document.getElementById('comment').value.trim();
+  
+      // Monta o payload
+      const payload = { email, username, comment };
+  
+      try {
+        const res = await fetch('/api/insert', {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json'
+          },
+          body: JSON.stringify(payload)
+        });
+  
+        if (res.ok) {
+          const json = await res.json();
+          alert('Comentário enviado com sucesso! ID: ' + json.insertId);
+          form.reset(); // limpa o formulário
+        } else {
+          const err = await res.text();
+          console.error('Resposta do servidor:', err);
+          alert('Falha ao enviar comentário: ' + res.status);
+        }
+      } catch (error) {
+        console.error('Erro de conexão:', error);
+        alert('Não foi possível comunicar com o servidor.');
+      }
+    });
+  });
   </script>
