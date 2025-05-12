@@ -1,7 +1,6 @@
 <?php
 
 header('Content-Type: application/json; charset=UTF-8');
-
 header('Access-Control-Allow-Origin: *');
 header('Access-Control-Allow-Headers: Content-Type');
 header('Access-Control-Allow-Methods: POST');
@@ -9,17 +8,11 @@ header('Access-Control-Allow-Methods: POST');
 require_once __DIR__ . '/src/conf/pdo.php';
 
 function gerarCodigo($email) {
-    // Gera um hash a partir do email
     $hash = md5($email);
-    
-    // Converte o hash em um código com formato XXXXX-XXXXX-XXXXX-XXXXX-XXXXX
-    $codigo = substr($hash, 0, 5) . '-' . substr($hash, 5, 5) . '-' . substr($hash, 10, 5) . '-' . substr($hash, 15, 5) . '-' . substr($hash, 20, 5);
-    
-    return $codigo;
+    return substr($hash, 0, 5) . '-' . substr($hash, 5, 5) . '-' . substr($hash, 10, 5) . '-' . substr($hash, 15, 5) . '-' . substr($hash, 20, 5);
 }
 
 try {
-    // 1) Recebe e decodifica o JSON
     $raw = file_get_contents('php://input');
     $data = json_decode($raw, true);
 
@@ -27,30 +20,46 @@ try {
         throw new Exception('Payload JSON inválido');
     }
 
-    // 2) Validação dos dados
     $email = $data['email'] ?? null;
     $username = $data['username'] ?? null;
     $comment = $data['comment'] ?? null;
-    if ($email === null || $username === null || $comment === null) {
-        throw new Exception('Campos E-mail, Nome de usuario e Comentario são obrigatórios');
+
+    if (!$email || !$username || !$comment) {
+        throw new Exception('Campos E-mail, Nome de usuário e Comentário são obrigatórios');
     }
+
+    // Verifica se o email ou username já existem
+    $sql = "SELECT DISTINCT u.id_usuario FROM usuarios u LEFT JOIN comentarios c ON u.id_usuario = c.id_usuario
+            WHERE u.email = :email OR u.nome = :username OR c.texto = :comentario;";
+    $stmt = $conn->prepare($sql);
+    $stmt->execute([
+        ':email' => $email,
+        ':username' => $username,
+        ':comentario' => $comment
+    ]);
+    $jaExiste = $stmt->rowCount() > 0;
+
+    if ($jaExiste) {
+        http_response_code(400);
+        echo json_encode([
+            'success' => false,
+            'error'   => 'E-mail, nome de usuário ou comentario já cadastrado.'
+        ]);
+        exit;
+    }
+
+    // Gera o código e data
     $codigo = gerarCodigo($email);
     $date = date('Y-m-d');
 
-    // 3) Executa os INSERTs
+    // Insere o código
     $sql = "INSERT INTO codigos (codigo, usado) VALUES (:codigo, 0)";
     $stmt = $conn->prepare($sql);
-    $stmt->execute([
-        ':codigo' => $codigo
-    ]);
+    $stmt->execute([':codigo' => $codigo]);
 
-    $sql = "SELECT id_codigo FROM codigos WHERE codigo = :codigo";
-    $stmt = $conn->prepare($sql);
-    $stmt->execute([
-        ':codigo' => $codigo
-    ]);
-    $codigoId = $stmt->fetchColumn();
+    $codigoId = $conn->lastInsertId();
 
+    // Insere o usuário
     $sql = "INSERT INTO usuarios (nome, email, id_codigo) VALUES (:nome, :email, :codigoId)";
     $stmt = $conn->prepare($sql);
     $stmt->execute([
@@ -59,13 +68,9 @@ try {
         ':codigoId' => $codigoId
     ]);
 
-    $sql = "SELECT id_usuario FROM usuarios WHERE email = :email";
-    $stmt = $conn->prepare($sql);
-    $stmt->execute([
-        ':email' => $email
-    ]);
-    $usuarioId = $stmt->fetchColumn();
+    $usuarioId = $conn->lastInsertId();
 
+    // Insere o comentário
     $sql = "INSERT INTO comentarios (id_usuario, texto, data_comentario) VALUES (:usuarioId, :texto, :data)";
     $stmt = $conn->prepare($sql);
     $stmt->execute([
@@ -74,7 +79,6 @@ try {
         ':data' => $date
     ]);
 
-    // 4) Responde com sucesso
     echo json_encode([
         'success'  => true,
         'insertId' => $conn->lastInsertId()
