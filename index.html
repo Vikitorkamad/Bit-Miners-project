@@ -266,8 +266,8 @@
 
     <h4 id="h4">Não recebeu seu código por e-mail?</h4>
     <div class="reenvio">
-        <p>nos repasse seu email que nossa equipe de suporte irá averiguar</p>
-        <form action="submit_comment.php" method="POST">
+        <p>Nos repasse seu e-mail, e nossa equipe de suporte irá averiguar.</p>
+        <form id="reenvio" method="POST">
             <input type="email" id="email" name="email" placeholder="Seu e-mail:" required>
             <button type="submit">Enviar</button>
         </form>
@@ -416,15 +416,17 @@ document.addEventListener("DOMContentLoaded", function () {
           },
           body: JSON.stringify(payload)
         });
-  
+      
+        const text = await res.text(); // sempre leia como texto primeiro
+        console.log('Resposta bruta:', text); // loga para debug
+      
         if (res.ok) {
-          const json = await res.json();
+          const json = JSON.parse(text); // tenta transformar em JSON
           alert('Comentário enviado com sucesso! ID: ' + json.insertId);
-          form.reset(); // limpa o formulário
+          form.reset();
         } else {
-          const err = await res.text();
-          console.error('Resposta do servidor:', err);
-          alert('Falha ao enviar comentário: ' + res.status);
+          console.error('Erro na resposta do servidor:', text);
+          alert('Erro ao enviar comentário: ' + res.status);
         }
       } catch (error) {
         console.error('Erro de conexão:', error);
@@ -432,4 +434,40 @@ document.addEventListener("DOMContentLoaded", function () {
       }
     });
   });
+
+     document.addEventListener("DOMContentLoaded", function () {
+        const form2 = document.getElementById('reenvio');
+    
+        form2.addEventListener('submit', async (e) => {
+            e.preventDefault();
+    
+            const email = document.getElementById('email').value.trim();
+    
+            const payload = { email };
+    
+            try {
+                const res = await fetch('http://localhost/bitMiners/reenviarEmail.php', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json'
+                    },
+                    body: JSON.stringify(payload)
+                });
+    
+                if (res.ok) {
+                    const json = await res.json();
+                    alert('Mensagem: funcionou por algum motivo ass:Pedro ' + json.insertId);
+                    form2.reset();
+                } else {
+                    const err = await res.text();
+                    console.error('Resposta do servidor:', err);
+                    alert('Mensagem: não funcionou por algum motivo ass:Pedro ' + res.status);
+                }
+            } catch (error) {
+                console.error('Erro de conexão:', error);
+                alert('Não foi possível comunicar com o servidor.');
+            }
+        });
+    });
+
   </script>
