@@ -84,6 +84,31 @@ try {
         'insertId' => $conn->lastInsertId()
     ]);
 
+    $emailPayload = json_encode(['email' => $email]);
+    
+    $ch = curl_init('http://localhost/bitMiners/enviarEmail.php'); // ou o caminho correto no seu servidor
+    curl_setopt_array($ch, [
+        CURLOPT_POST           => true,
+        CURLOPT_POSTFIELDS     => $emailPayload,
+        CURLOPT_HTTPHEADER     => [
+            'Content-Type: application/json',
+            'Content-Length: ' . strlen($emailPayload)
+        ],
+        CURLOPT_RETURNTRANSFER => true
+    ]);
+    
+    $response = curl_exec($ch);
+    $curlErr  = curl_errno($ch);
+    $curlMsg  = curl_error($ch);
+    $httpCode = curl_getinfo($ch, CURLINFO_HTTP_CODE);
+    
+    curl_close($ch);
+    
+    // Opcional: loga ou trata falhas no envio
+    if ($curlErr || $httpCode >= 400) {
+        error_log("Erro ao enviar e-mail: ($httpCode) $curlMsg - $response");
+    }
+
 } catch (PDOException $e) {
     http_response_code(500);
     echo json_encode([
