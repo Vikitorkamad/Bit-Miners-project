@@ -18,6 +18,7 @@ $dotenv->load();
 $apiKey = decryptEnvKey($_SERVER['ENCRYPTED_API_KEY'], $_SERVER['APP_KEY']);
 
 $url = "https://api.resend.com/emails";
+$email = "ispe679@gmail.com";
 
 
 $htmlContent = '
@@ -123,7 +124,7 @@ $htmlContent = '
 
 $payload = [
     "from" => "noreply@bitminers.shop",
-    "to" => "0001062748@senaimgaluno.com.br",
+    "to" => $email,
     "subject" => "Bem-vindo ao BitMiners!",
     "html" => $htmlContent
 ];

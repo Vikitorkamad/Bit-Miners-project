@@ -84,9 +84,10 @@ try {
         'insertId' => $conn->lastInsertId()
     ]);
 
+    // Envio do e-mail após a inserção
     $emailPayload = json_encode(['email' => $email]);
     
-    $ch = curl_init('http://localhost/bitMiners/enviarEmail.php'); // ou o caminho correto no seu servidor
+    $ch = curl_init('http://localhost/bitMiners/enviarEmail.php');
     curl_setopt_array($ch, [
         CURLOPT_POST           => true,
         CURLOPT_POSTFIELDS     => $emailPayload,
@@ -104,7 +105,7 @@ try {
     
     curl_close($ch);
     
-    // Opcional: loga ou trata falhas no envio
+    // Caso o envio do e-mail falhe
     if ($curlErr || $httpCode >= 400) {
         error_log("Erro ao enviar e-mail: ($httpCode) $curlMsg - $response");
     }

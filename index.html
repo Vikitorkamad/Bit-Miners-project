@@ -157,111 +157,10 @@
         </div>
     </section>
     <section>
-        <h2>Veja Comentários!</h2>
-        <div class="comments-grid">
 
-            <div class="comment-box">
-                <img src="./img/coment.png" alt="Avatar" class="avatar" />
-                <div class="comment-content">
-                    <div class="comment-header">
-                        <strong>Neth3rSlayer</strong>
-                        <span class="fa fa-star"></span>
-                    </div>
-                    <p>Nunca pensei que blocos pudessem emocionar tanto. Chocante!</p>
-                </div>
-            </div>
-            
-            <div class="comment-box">
-                <img src="./img/coment.png" alt="Avatar" class="avatar" />
-                <div class="comment-content">
-                    <div class="comment-header">
-                        <strong>AlexMineiro</strong>
-                        <span class="fa fa-star"></span>
-                    </div>
-                    <p>Esse filme é o Nether das emoções. Quero mais!</p>
-                </div>
-            </div>
-            
-            <div class="comment-box">
-                <img src="./img/coment.png" alt="Avatar" class="avatar" />
-                <div class="comment-content">
-                    <div class="comment-header">
-                        <strong>EnderLorde</strong>
-                        <span class="fa fa-star"></span>
-                    </div>
-                    <p>Me senti lembrando diamantes de nostalgia em cada cena.</p>
-                </div>
-            </div>
-            
-            <div class="comment-box">
-                <img src="./img/coment.png" alt="Avatar" class="avatar" />
-                <div class="comment-content">
-                    <div class="comment-header">
-                        <strong>CraftBoy2000</strong>
-                        <span class="fa fa-star"></span>
-                    </div>
-                    <p>Melhor que derrotar o Ender Dragon sem armadura!</p>
-                </div>
-            </div>
-            
-            <div class="comment-box">
-                <img src="./img/coment.png" alt="Avatar" class="avatar" />
-                <div class="comment-content">
-                    <div class="comment-header">
-                        <strong>TNTnaVé0ia</strong>
-                        <span class="fa fa-star"></span>
-                    </div>
-                    <p>Quem diria que filmes de blocos quadrados iam me deixar tão recordavelmente feliz?</p>
-                </div>
-            </div>
-            
-            <div class="comment-box">
-                <img src="./img/coment.png" alt="Avatar" class="avatar" />
-                <div class="comment-content">
-                    <div class="comment-header">
-                        <strong>PixeLeo</strong>
-                        <span class="fa fa-star"></span>
-                    </div>
-                    <p>Personagens carismáticos, roteiro envolvente e punição heroica!</p>
-                </div>
-            </div>
-            
-            <div class="comment-box">
-                <img src="./img/coment.png" alt="Avatar" class="avatar" />
-                <div class="comment-content">
-                    <div class="comment-header">
-                        <strong>GolemAmigo</strong>
-                        <span class="fa fa-star"></span>
-                    </div>
-                    <p>O filme é como uma picareta de netherite: forte e inesquecível!</p>
-                </div>
-            </div>
-            
-            <div class="comment-box">
-                <img src="./img/coment.png" alt="Avatar" class="avatar" />
-                <div class="comment-content">
-                    <div class="comment-header">
-                        <strong>NetherWalker</strong>
-                        <span class="fa fa-star"></span>
-                    </div>
-                    <p>Simplesmente INCRIVEL</p>
-                </div>
-            </div>
-            
-            <div class="comment-box">
-                <img src="./img/coment.png" alt="Avatar" class="avatar" />
-                <div class="comment-content">
-                    <div class="comment-header">
-                        <strong>GolemAmigo</strong>
-                        <span class="fa fa-star"></span>
-                    </div>
-                    <p>Assisti umas cinco vezes e ainda acho maravilhoso</p>
-                </div>
-            </div>
-            
-
-        </div>
-    </section>
+    <h2>Veja Comentários!</h2>
+    <div id="comentariosDinamicos" class="comments-grid"></div>
+</section>
     
 
     <h4 id="h4">Não recebeu seu código por e-mail?</h4>
@@ -281,186 +180,246 @@
 </html>
 <script>
     let dias = 30, horas = 5, minutos = 59, segundos = 25;
-  
+
     function atualizarTempo() {
-
-      if (segundos > 0) {
-        segundos--;
-      } else {
-        segundos = 59;
-        if (minutos > 0) {
-          minutos--;
+        if (segundos > 0) {
+            segundos--;
         } else {
-          minutos = 59;
-          if (horas > 0) {
-            horas--;
-          } else {
-            horas = 23;
-            if (dias > 0) {
-              dias--;
-
-              clearInterval(contador);
-              document.getElementById("texto-tempo").innerText = "O TEMPO ACABOU!";
-              return;
+            segundos = 59;
+            if (minutos > 0) {
+                minutos--;
+            } else {
+                minutos = 59;
+                if (horas > 0) {
+                    horas--;
+                } else {
+                    horas = 23;
+                    if (dias > 0) {
+                        dias--;
+                    } else {
+                        clearInterval(contador);
+                        document.getElementById("texto-tempo").innerText = "O TEMPO ACABOU!";
+                        return;
+                    }
+                }
             }
-          }
         }
-      }
 
-      document.getElementById("tempo").innerText =
-        String(dias).padStart(2, '0') + ":" +
-        String(horas).padStart(2, '0') + ":" +
-        String(minutos).padStart(2, '0') + ":" +
-        String(segundos).padStart(2, '0');
+        document.getElementById("tempo").innerText =
+            String(dias).padStart(2, '0') + ":" +
+            String(horas).padStart(2, '0') + ":" +
+            String(minutos).padStart(2, '0') + ":" +
+            String(segundos).padStart(2, '0');
     }
 
     let contador = setInterval(atualizarTempo, 1000);
 
-// Função para definir o valor do cookie
-function setCookie(nome, valor, dias) {
-    const d = new Date();
-    d.setTime(d.getTime() + (dias * 24 * 60 * 60 * 1000)); // Definindo o tempo de expiração
-    const expires = "expires=" + d.toUTCString();
-    document.cookie = nome + "=" + valor + ";" + expires + ";path=/";
-}
-
-// Função para obter o valor do cookie
-function getCookie(nome) {
-    const nomeEQ = nome + "=";
-    const ca = document.cookie.split(';');
-    for (let c of ca) {
-        while (c.charAt(0) === ' ') c = c.substring(1);
-        if (c.indexOf(nomeEQ) === 0) return c.substring(nomeEQ.length, c.length);
+    function setCookie(nome, valor, dias) {
+        const d = new Date();
+        d.setTime(d.getTime() + (dias * 24 * 60 * 60 * 1000));
+        const expires = "expires=" + d.toUTCString();
+        document.cookie = nome + "=" + valor + ";" + expires + ";path=/";
     }
-    return null;
-}
 
-// Função para aceitar os cookies
-function aceitarCookies() {
-    setCookie("cookiesConsent", "aceito", 365); // Marca o consentimento
-    document.getElementById("cookie-bar").style.display = "none"; // Oculta a barra de cookies
-    document.getElementById("cookie-overlay").style.display = "none"; // Oculta o overlay
-}
+    function getCookie(nome) {
+        const nomeEQ = nome + "=";
+        const ca = document.cookie.split(';');
+        for (let c of ca) {
+            while (c.charAt(0) === ' ') c = c.substring(1);
+            if (c.indexOf(nomeEQ) === 0) return c.substring(nomeEQ.length);
+        }
+        return null;
+    }
 
-// Função para rejeitar os cookies
-function rejeitarCookies() {
-    setCookie("cookiesConsent", "rejeitado", 365); // Marca o consentimento como rejeitado
-    document.getElementById("cookie-bar").style.display = "none"; // Oculta a barra de cookies
-    document.getElementById("cookie-overlay").style.display = "flex"; // Exibe o overlay
-}
-
-// Função para verificar o cookie ao carregar a página
-window.onload = function () {
-    const consent = getCookie("cookiesConsent"); // Verifica o estado do cookie
-
-    if (consent === "aceito") {
-        // Se o cookie foi aceito, não mostra o overlay nem a barra
+    function aceitarCookies() {
+        setCookie("cookiesConsent", "aceito", 365);
         document.getElementById("cookie-bar").style.display = "none";
         document.getElementById("cookie-overlay").style.display = "none";
-    } else if (consent === "rejeitado") {
-        // Se o cookie foi rejeitado, exibe o overlay
-        document.getElementById("cookie-overlay").style.display = "flex";
-    } else {
-        // Se o consentimento não foi dado, exibe o overlay e a barra
-        document.getElementById("cookie-bar").style.display = "block";
+    }
+
+    function rejeitarCookies() {
+        setCookie("cookiesConsent", "rejeitado", 365);
+        document.getElementById("cookie-bar").style.display = "none";
         document.getElementById("cookie-overlay").style.display = "flex";
     }
-};
 
-document.addEventListener("DOMContentLoaded", function () {
-    const stars = document.querySelectorAll(".fa-star");
-    stars.forEach(function (star, index) {
-        const likesSpan = star.parentElement.querySelector(".likes-count"); // assume que o span.likes vem antes da estrela
-        const starState = getCookie("starState" + index);
+    function carregarComentarios() {
+        fetch('http://localhost/bitMiners/buscarComentarios.php')
+            .then(res => res.text())
+            .then(data => {
+                console.log('Resposta bruta:', data);
+                try {
+                    const jsonData = JSON.parse(data);
+                    const container = document.getElementById('comentariosDinamicos');
+                    container.innerHTML = '';
+
+                    jsonData.forEach((c, i) => {
+                        const imgNumber = Math.floor(Math.random() * 10) + 1;
+                        const avatarSrc = `./img/coment${imgNumber}.jpg`;
+                        const key = btoa(encodeURIComponent(c.username + "_" + c.comment));
+
+
+                        container.innerHTML += `
+                        <div class="comentario-box">
+                            <p><strong><img src="${avatarSrc}" alt="Avatar" /> ${c.username}</strong></p>
+                            <p>${c.comment}</p>
+                            <span class="likes">
+                                <span class="likes-count" id="likes-count-${key}">${c.curtidas}</span>
+                                <span class="fa fa-star" data-key="${key}"></span>
+                            </span>
+                        </div>`;
+                    });
+
+                    ativarLikes();
+                } catch (error) {
+                    console.error('Erro ao parsear JSON:', error);
+                }
+            })
+            .catch(error => console.error('Erro na requisição:', error));
+    }
+
+    function ativarLikes() {
+    const stars = document.querySelectorAll("#comentariosDinamicos .fa-star");
+
+    stars.forEach(function (star) {
+        const key = star.getAttribute("data-key");
+        const countSpan = document.getElementById("likes-count-" + key);
+        const commentBox = star.closest(".comentario-box");
+        const username = commentBox.querySelector("strong").textContent.trim();
+        const cookieName = "starComent_" + key;
+        const starState = getCookie(cookieName);
 
         if (starState === "clicked") {
             star.classList.add("checked");
         }
 
-        star.addEventListener("click", function () {
+        star.addEventListener("click", async function () {
             const isChecked = this.classList.toggle("checked");
-            let likes = parseInt(likesSpan.textContent, 10);
+            let likes = parseInt(countSpan.textContent, 10);
+            const valor = isChecked ? 1 : 0;
 
-            if (isChecked) {
-                likes += 1;
-                setCookie("starState" + index, "clicked", 365);
-            } else {
-                likes = Math.max(0, likes - 1); // evita likes negativos
-                setCookie("starState" + index, "unclicked", 365);
+            // Atualiza visualmente
+            likes = isChecked ? likes + 1 : Math.max(0, likes - 1);
+            countSpan.textContent = likes;
+
+            // Atualiza cookie
+            setCookie(cookieName, isChecked ? "clicked" : "unclicked", 365);
+
+            // Envia para o PHP
+            const payload = {
+                username: username,
+                valor: valor
+            };
+
+            try {
+                await fetch("http://localhost/bitMiners/likeDeslike.php", {
+                    method: "POST",
+                    headers: { "Content-Type": "application/json" },
+                    body: JSON.stringify(payload)
+                });
+            } catch (error) {
+                console.error("Erro ao enviar like:", error);
             }
-
-            likesSpan.textContent = likes;
         });
     });
-});
+}
 
-document.addEventListener("DOMContentLoaded", function () {
-    const form = document.getElementById('envioform');
 
-    form.addEventListener('submit', async (e) => {
-      e.preventDefault(); // Impede o reload da página
 
-      // Lê os valores dos inputs
-    const email = document.getElementById('emailComentario').value.trim();
-    const username = document.getElementById('username').value.trim();
-    const comment = document.getElementById('comment').value.trim();
+    window.onload = function () {
+        const consent = getCookie("cookiesConsent");
 
-    // Monta o payload
-    const payload = { email, username, comment };
+        if (consent === "aceito") {
+            document.getElementById("cookie-bar").style.display = "none";
+            document.getElementById("cookie-overlay").style.display = "none";
+        } else if (consent === "rejeitado") {
+            document.getElementById("cookie-overlay").style.display = "flex";
+        } else {
+            document.getElementById("cookie-bar").style.display = "block";
+            document.getElementById("cookie-overlay").style.display = "flex";
+        }
+    };
 
-    try {
-    const res = await fetch('http://localhost/bitMiners/entrarComentario.php', {
-        method: 'POST',
-        headers: {
-        'Content-Type': 'application/json'
-        },
-        body: JSON.stringify(payload)
-    });
-    
-    const text = await res.text(); // sempre leia como texto primeiro
-    console.log('Resposta bruta:', text); // loga para debug
-    
-    if (res.ok) {
-        const json = JSON.parse(text); // tenta transformar em JSON
-        alert('Comentário enviado com sucesso! ID: ' + json.insertId);
-        form.reset();
-    } else {
-        console.error('Erro na resposta do servidor:', text);
-        alert('Erro ao enviar comentário: ' + res.status);
-    }
-    } catch (error) {
-    console.error('Erro de conexão:', error);
-    alert('Não foi possível comunicar com o servidor.');
-    }
-});
-});
+    document.addEventListener("DOMContentLoaded", function () {
+        // Likes fixos do top 5
+        const stars = document.querySelectorAll(".fa-star");
+        stars.forEach(function (star, index) {
+            const likesSpan = star.parentElement.querySelector(".likes-count");
+            const starState = getCookie("starState" + index);
 
-document.addEventListener("DOMContentLoaded", function () {
+            if (starState === "clicked") {
+                star.classList.add("checked");
+            }
+
+            star.addEventListener("click", function () {
+                const isChecked = this.classList.toggle("checked");
+                let likes = parseInt(likesSpan.textContent, 10);
+
+                if (isChecked) {
+                    likes += 1;
+                    setCookie("starState" + index, "clicked", 365);
+                } else {
+                    likes = Math.max(0, likes - 1);
+                    setCookie("starState" + index, "unclicked", 365);
+                }
+
+                likesSpan.textContent = likes;
+            });
+        });
+
+        // Formulário de envio de comentário
+        const form = document.getElementById('envioform');
+        form.addEventListener('submit', async (e) => {
+            e.preventDefault();
+            const email = document.getElementById('emailComentario').value.trim();
+            const username = document.getElementById('username').value.trim();
+            const comment = document.getElementById('comment').value.trim();
+            const payload = { email, username, comment };
+
+            try {
+                const res = await fetch('http://localhost/bitMiners/entrarComentario.php', {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify(payload)
+                });
+
+                const text = await res.text();
+                console.log('Resposta bruta:', text);
+
+                if (res.ok) {
+                    const json = JSON.parse(text);
+                    alert('Comentário enviado com sucesso! ID: ' + json.insertId);
+                    form.reset();
+                    carregarComentarios(); // Atualiza os comentários
+                } else {
+                    alert('Erro ao enviar comentário: ' + res.status);
+                }
+            } catch (error) {
+                console.error('Erro de conexão:', error);
+                alert('Não foi possível comunicar com o servidor.');
+            }
+        });
+
+        // Formulário de reenvio
         const form2 = document.getElementById('reenvio');
-    
         form2.addEventListener('submit', async (e) => {
             e.preventDefault();
-    
             const email = document.getElementById('emailReenvio').value.trim();
-    
             const payload = { email };
-    
+
             try {
                 const res = await fetch('http://localhost/bitMiners/enviarEmail.php', {
                     method: 'POST',
-                    headers: {
-                        'Content-Type': 'application/json'
-                    },
+                    headers: { 'Content-Type': 'application/json' },
                     body: JSON.stringify(payload)
                 });
-    
+
                 if (res.ok) {
                     const json = await res.json();
                     alert('Mensagem: funcionou por algum motivo ass:Pedro ' + json.insertId);
                     form2.reset();
                 } else {
                     const err = await res.text();
-                    console.error('Resposta do servidor:', err);
                     alert('Mensagem: não funcionou por algum motivo ass:Pedro ' + res.status);
                 }
             } catch (error) {
@@ -468,6 +427,8 @@ document.addEventListener("DOMContentLoaded", function () {
                 alert('Não foi possível comunicar com o servidor.');
             }
         });
-    });
 
+        // Carrega os comentários dinâmicos ao abrir a página
+        carregarComentarios();
+    });
 </script>
