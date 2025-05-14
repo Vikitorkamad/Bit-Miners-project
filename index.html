@@ -389,11 +389,11 @@
 
                 if (res.ok) {
                     const json = await res.json();
-                    alert('Mensagem: funcionou por algum motivo ass:Pedro ' + json.insertId);
+                    alert('O E-mail foi enviado com sucesso' + json.insertId);
                     form2.reset();
                 } else {
                     const err = await res.text();
-                    alert('Mensagem: não funcionou por algum motivo ass:Pedro ' + res.status);
+                    alert('E-mail não possui comentario cadastrado ' + res.status);
                 }
             } catch (error) {
                 console.error('Erro de conexão:', error);
