@@ -68,78 +68,14 @@
     <section name="comentarios">
         <h2>Melhores Comentários</h2>
         <div class="comentarios">
-            <div class="ranking">
-                <h3>1º lugar</h3>
-                <div id="sla">
-                    <p><strong><img src="./img/coment1.jpg" alt="Avatar" /> BlocoMaster</strong></p>
-                    <p>
-                        Explodiu mais que TNT! Esse filme foi uma aventura épica!
-                        <span class="likes">
-                          <span class="likes-count">81</span>
-                          <span class="fa fa-star"></span>
-                        </span>
-                      </p>
-                </div>
-            </div>
-
-            <div class="ranking">
-                <h3>2º lugar</h3>
-                <div id="sla">
-                    <p><strong><img src="./img/coment1.jpg" alt="Avatar" /> CreeperK1ng</strong></p>
-                    <p>
-                        Finalmente um filme que atende o que é um verdadeiro miner!
-                        <span class="likes">
-                            <span class="likes-count">94</span>
-                            <span class="fa fa-star"></span>
-                        </span>
-                    </p>
-                </div>
-            </div>
-            
-            <div class="ranking">
-                <h3>3º lugar</h3>
-                <div id="sla">
-                    <p><strong><img src="./img/coment1.jpg" alt="Avatar" /> SteveCraftado</strong></p>
-                    <p>
-                        Se esse filme fosse um item, seria encantado!
-                        <span class="likes">
-                            <span class="likes-count">68</span>
-                            <span class="fa fa-star"></span>
-                        </span>
-                    </p>
-                </div>
-            </div>
-            
-            <div class="ranking">
-                <h3>4º lugar</h3>
-                <div id="sla">
-                    <p><strong><img src="./img/coment1.jpg" alt="Avatar" /> AbelhaPixelada</strong></p>
-                    <p>
-                        Saí do cinema querendo construir tudo que vi no filme!
-                        <span class="likes">
-                            <span class="likes-count">94</span>
-                            <span class="fa fa-star"></span>
-                        </span>
-                    </p>
-                </div>
-            </div>
-            
-            <div class="ranking">
-                <h3>5º lugar</h3>
-                <div id="sla">
-                    <p><strong><img src="./img/coment1.jpg" alt="Avatar" /> RedstoneRider</strong></p>
-                    <p>
-                        Mais divertido que tentar dormir com um monstro por perto!
-                        <span class="likes">
-                            <span class="likes-count">62</span>
-                            <span class="fa fa-star"></span>
-                        </span>
-                    </p>
-                </div>
-            </div>
-
+            <div class="ranking"></div>
+            <div class="ranking"></div>
+            <div class="ranking"></div>
+            <div class="ranking"></div>
+            <div class="ranking"></div>
         </div>
     </section>
+
 
     <section>
         <p id="texto-tempo">o tempo está acabando. DEIXE SEU COMENTÁRIO!!!</p>
@@ -244,7 +180,7 @@
     }
 
     function carregarComentarios() {
-        fetch('http://localhost/bitMiners/buscarComentarios.php')
+        fetch('http://localhost/bitMiners/buscarComentariosAleatorios.php')
             .then(res => res.text())
             .then(data => {
                 console.log('Resposta bruta:', data);
@@ -277,6 +213,42 @@
             })
             .catch(error => console.error('Erro na requisição:', error));
     }
+
+    function carregarTopComentarios() {
+        fetch('http://localhost/bitMiners/buscarComentariosMaisCurtidos.php')
+            .then(res => res.text())
+            .then(data => {
+                console.log('Top curtidos brutos:', data);
+                try {
+                    const jsonData = JSON.parse(data);
+                    const rankings = document.querySelectorAll(".ranking");
+
+                    jsonData.slice(0, 5).forEach((c, i) => {
+                        const rankingDiv = rankings[i];
+                        const imgNumber = Math.floor(Math.random() * 10) + 1;
+                        const avatarSrc = `./img/coment${imgNumber}.jpg`;
+
+                        rankingDiv.innerHTML = `
+                            <h3>${i + 1}º lugar</h3>
+                            <div>
+                                <p><strong><img src="${avatarSrc}" alt="Avatar" /> ${c.username}</strong></p>
+                                <p>
+                                    ${c.comment}
+                                    </p>
+                                <span class="top-likes">
+                                    <span class="top-likes-count">${c.curtidas}</span>
+                                    <span class="fa fa-star top-star"></span>
+                                </span>
+                            </div>
+                        `;
+                    });
+                } catch (error) {
+                    console.error('Erro ao parsear JSON de top curtidos:', error);
+                }
+            })
+            .catch(error => console.error('Erro ao carregar top curtidos:', error));
+    }
+
 
     function ativarLikes() {
     const stars = document.querySelectorAll("#comentariosDinamicos .fa-star");
@@ -342,6 +314,7 @@
 
     document.addEventListener("DOMContentLoaded", function () {
         // Likes fixos do top 5
+        carregarTopComentarios();
         const stars = document.querySelectorAll(".fa-star");
         stars.forEach(function (star, index) {
             const likesSpan = star.parentElement.querySelector(".likes-count");
