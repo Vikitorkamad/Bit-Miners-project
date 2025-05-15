@@ -364,3 +364,52 @@ form button:hover {
         grid-template-columns: 1fr; 
     }
 }
+
+.comentario-box {
+    background-color: #f3f3f3;
+    border-radius: 10px;
+    padding: 10px;
+    margin-bottom: 10px;
+    box-shadow: 0 0 4px rgba(0,0,0,0.1);
+}
+.comentario-box img {
+    width: 35px;
+    height: 35px;
+    border-radius: 65%;
+    margin-right: 8px;
+    vertical-align: middle;
+    object-fit: cover;
+}
+.likes {
+    display: inline-flex;
+    align-items: center;
+    gap: 4px;
+    cursor: pointer;
+    color: gold;
+}
+.fa-star {
+  color: gray; /* cor padrão */
+    cursor: pointer;
+    transition: color 0.2s;
+}
+
+.fa-star.checked {
+  color: gold; /* quando curtido */
+}
+
+.top-likes {
+    display: inline-flex;
+    align-items: center;
+    gap: 4px;
+    color: #333; /* número visível */
+}
+
+.top-likes-count {
+    font-weight: bold;
+    color: #333;
+}
+
+.top-star {
+    color: gold; /* sempre dourada */
+    cursor: default;
+}
